@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Irfan Sadiq Rahat — Portfolio</title>
+  <meta name="description" content="Portfolio of Irfan Sadiq Rahat — AI/ML research in healthcare, agriculture, and knowledge graphs.">
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090d; --bg2:#0b0e14; --glass:#0e121a; --panel:#0e1118;
+      --text:#f1f2f4; --muted:#a6adbb; --accent:#ffd659; --accent2:#76e4ff;
+      --border:#1a2030; --max:1120px; --radius:16px; --shadow:0 10px 40px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:var(--accent);text-decoration:none} a:hover{opacity:.9}
+    img{display:block;max-width:100%;height:auto}
+
+    /* animated backdrop */
+    .backdrop{
+      position:fixed;inset:0;z-index:-1;
+      background:
+        radial-gradient(1200px 700px at -10% -20%, rgba(118,228,255,.16), transparent 60%),
+        radial-gradient(1000px 600px at 120% 10%, rgba(255,214,89,.12), transparent 55%),
+        linear-gradient(180deg,var(--bg2),var(--bg));
+      filter:saturate(1.05);
+      animation:floatBg 18s ease-in-out infinite alternate;
+    }
+    @keyframes floatBg{
+      from{background-position:0 0, 0 0, 0 0}
+      to  {background-position:-20px -30px, 10px 20px, 0 0}
+    }
+
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(12,15,22,.75);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .nav .inner{max-width:var(--max);margin:auto;display:flex;align-items:center;gap:14px;padding:14px 18px}
+    .brand{font-weight:800;letter-spacing:.2px}
+    .spacer{flex:1}
+    .nav a{color:var(--text);opacity:.85;font-weight:600;padding:8px 12px;border:1px solid transparent;border-radius:12px}
+    .nav a:hover{opacity:1;border-color:var(--border)}
+    .cta{background:var(--accent);color:#111;border-color:transparent}
+    .cta:hover{opacity:1}
+
+    /* layout */
+    section{padding:72px 18px}
+    .wrap{max-width:var(--max);margin:auto}
+    h1,h2{margin:0 0 14px}
+    h1{font-size:clamp(26px,4vw,36px)}
+    h2{font-size:clamp(22px,3vw,30px)}
+    p.lead{color:var(--muted);max-width:75ch}
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:40px 0}
+
+    /* cards & grids */
+    .card{background:linear-gradient(180deg,var(--panel),var(--glass));border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .pad{padding:24px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+    .grid-2{display:grid;gap:24px;grid-template-columns:1.25fr .9fr;align-items:center}
+    @media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+
+    /* profile block */
+    .profile{width:min(380px,92%);aspect-ratio:1/1;border-radius:20px;border:1px solid var(--border);background:#0a0f17;display:grid;place-items:center;margin:0 auto;overflow:hidden}
+    .profile img{width:100%;height:100%;object-fit:cover;border-radius:inherit;transition:transform .6s ease}
+    .profile:hover img{transform:scale(1.03)}
+
+    /* tiles for galleries */
+    .tile{position:relative;border-radius:14px;overflow:hidden;background:#0b0e14;border:1px solid var(--border)}
+    .tile img{width:100%;height:220px;object-fit:cover;transition:transform .6s ease;will-change:transform}
+    .tile:hover img{transform:scale(1.05)}
+    .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;font-weight:600;background:linear-gradient(180deg,transparent,rgba(0,0,0,.7))}
+
+    /* list items */
+    .item{padding:18px;border-radius:12px;border:1px solid var(--border);background:#0c1018}
+    .tag{display:inline-block;padding:4px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-weight:600;font-size:.8rem}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--accent);color:#111;font-weight:800}
+
+    /* contact */
+    .contact-cards{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+    .contact-cards a{display:flex;align-items:center;gap:10px;padding:14px;border-radius:12px;border:1px solid var(--border);background:#0f1420;color:var(--text)}
+    .contact-cards i{width:22px;text-align:center;color:var(--accent)}
+
+    /* publications block (your pasted classes) */
+    .publications .container{max-width:var(--max);margin:auto}
+    .publications .section-header p{color:var(--accent2);font-weight:800;letter-spacing:.06em;margin:0 0 6px}
+    .publications .section-header h2{margin-bottom:6px}
+    .publications .row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .publication-item{border:1px solid var(--border);border-radius:14px;background:#0c1018}
+    .publication-text{padding:16px 18px}
+    .publication-text h2{font-size:1.02rem;margin:0 0 8px}
+    .publication-text p{margin:0 0 6px;color:var(--muted)}
+    .pub-search{margin:10px auto 18px;max-width:600px;display:flex;gap:10px}
+    .pub-search input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid var(--border);background:#0b0f17;color:var(--text)}
+    .pub-note{color:var(--muted);margin-top:6px}
+
+    /* reveal-on-scroll (replaces wow.js) */
+    .wow{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .wow.animated{opacity:1;transform:none}
+
+    /* back-to-top */
+    .to-top{position:fixed;right:18px;bottom:18px;z-index:60;background:#111;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:10px 12px;opacity:.9}
+    .to-top:hover{opacity:1}
+
+    footer{padding:30px 18px;border-top:1px solid var(--border);text-align:center;color:#8a93a3}
+  </style>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="inner">
+      <div class="brand">Irfan Sadiq Rahat</div>
+      <div class="spacer"></div>
+      <a href="#about">About</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#journey">Academic</a>
+      <a href="#agenda">Research</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact" class="cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap grid-2">
+      <div class="card pad wow">
+        <h1>About Irfan Sadiq</h1>
+        <p class="lead">
+          I’m Irfan Sadiq Rahat, an AI researcher with a B.Tech in CSE (AI &amp; ML) from VIT-AP University.
+          I build models and tools at the intersection of computer vision, knowledge graphs, and safe clinical decision support.
+        </p>
+        <p class="muted">
+          I’ve co-authored 31 publications (510 citations). My practice emphasizes reproducibility (datasets/configs/code),
+          evaluation depth (ROC/AUROC, F1, calibration/ECE, Brier, ablations), and interpretability (Grad-CAM/LIME overlays, case-view tooling).
+          As President of the Machine Learning Club, I scaled a small group into a leading research community through hackathons and reading groups.
+          I’m developing graph-guided, clinician-aligned AI that produces auditable recommendations for resource-constrained settings.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <span class="tag">Healthcare AI</span><span class="tag">Agriculture AI</span>
+          <span class="tag">Vision</span><span class="tag">Graph + LLM</span><span class="tag">Explainability</span>
+        </div>
+      </div>
+      <div class="profile card wow" aria-label="Profile image">
+        <img id="img-personal" alt="Profile image" style="display:none">
+        <span id="img-personal-fallback" class="muted">Profile image</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- LEADERSHIP -->
+  <section id="leadership">
+    <div class="wrap">
+      <h2 class="wow">Leadership — Unique Identities</h2>
+      <div class="grid">
+        <div class="item wow">
+          <strong>Team Player</strong>
+          <p class="muted">
+            When I became president of the Machine Learning Club at VIT-AP, it had four members and limited reach.
+            I built a culture of collaboration, clear goals, and shared ownership—growing to 160+ members and earning Best Technical Club.
+            I coordinate contributors on data curation, experiment plans, and writing so every project moves from idea to reproducible results and publication.
+          </p>
+        </div>
+        <div class="item wow">
+          <strong>Innovator</strong>
+          <p class="muted">
+            I design hybrid CNN/Transformer approaches for imaging and KG+LLM pipelines for drug repurposing—prioritizing explainability and reliability.
+            Standardized interpretability (case views, attention/heatmaps) and calibration/uncertainty checks make decisions auditable and useful.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:10px">
+        <div class="item wow">
+          <strong>“Why” I Do What I Do</strong>
+          <p class="muted">
+            Technology should turn evidence into action. My work focuses on healthcare diagnostics and agricultural sustainability—where transparent, data-driven support can change outcomes.
+          </p>
+        </div>
+        <div class="item wow">
+          <strong>How I Work</strong>
+          <p class="muted">
+            I define the real problem, baselines, and constraints first. Experiments are versioned; results include error analysis, calibration, and clear visualizations. Repos include readable configs and seeds so others can reproduce and extend the work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- ACADEMIC JOURNEY -->
+  <section id="journey">
+    <div class="wrap">
+      <h2 class="wow">My Academic Journey</h2>
+
+      <div class="grid">
+        <div class="item wow">
+          <strong>2021 – Present · B.Tech, CSE (AI &amp; ML)</strong>
+          <div class="muted">Vellore Institute of Technology, Andhra Pradesh, India — GPA 7.96</div>
+        </div>
+        <div class="item wow">
+          <strong>2018 – 2020 · Higher Secondary Certificate</strong>
+          <div class="muted">BAF Shaheen College, Dhaka — GPA 5.0/5.0</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:24px" class="wow">Awards &amp; Scholarships</h3>
+      <ul class="muted wow">
+        <li>2023 · Raman Research Award for Publications, VIT-AP University</li>
+        <li>2023 · Best Research Paper Award, ICISML Conference</li>
+        <li>2023–24 · Best Technical Club (President, ML Club)</li>
+        <li>2021 · INTERNATIONAL SCHOLARSHIP FOR EDUCATION &amp; ENRICHMENT (I-SEE)</li>
+      </ul>
+
+      <h3 style="margin-top:24px" class="wow">Internships</h3>
+      <div class="grid">
+        <div class="item wow">
+          <strong>Nov 2022 – Nov 2023 · Dr. J. V. N. Ramesh</strong>
+          <div class="muted">Graphic Era Hill University, Dehradun</div>
+          <ul class="muted">
+            <li>Lung tissue classification (medical imaging)</li>
+            <li>Cassava leaf disease classification</li>
+            <li>Cauliflower disease classification</li>
+          </ul>
+        </div>
+        <div class="item wow">
+          <strong>Apr 2023 – Apr 2024 · Dr. P. Pavan Kumar</strong>
+          <div class="muted">IcfaiTech (IFHE), Hyderabad</div>
+          <ul class="muted">
+            <li>Deep learning for TB, Pneumonia, and Alzheimer’s diagnosis</li>
+            <li>Hands-on medical data analysis pipelines</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- RESEARCH AGENDA -->
+  <section id="agenda">
+    <div class="wrap">
+      <h2 class="wow">Research Agenda — Built on my past work, growing in scope</h2>
+      <p class="muted wow">
+        Extend reliable image-based systems in agriculture &amp; health with calibrated, explainable models and evidence-tracked knowledge graphs.
+      </p>
+
+      <div class="grid">
+        <div class="item wow">
+          <strong>Direction 1 — ETHNO-Bridge (ongoing)</strong>
+          <p class="muted">
+            Align Traditional Bangladeshi Medicine with modern biomedicine. Built Neo4j graph (~14k nodes, 8.5k edges) linking diseases, drugs, herbs, symptoms, side-effects, diet advice and treatments with evidence. Next: fuse with ICD, SNOMED, DrugBank/DrugCentral, DisGeNET, ClinicalTrials; train graph model to score indications &amp; contraindications; retrieval-guided LM for multi-hop, checkable rationales.
+          </p>
+        </div>
+        <div class="item wow">
+          <strong>Direction 2 — CARE-GFM</strong>
+          <p class="muted">
+            Clinician-Aligned Repositioning Graph Foundation Model using typed graph learning and calibrated losses, with zero/low-shot disease embeddings. Every suggestion points to supporting paths; evaluated via decision-curve and calibration metrics plus expert study. Outputs: Bio-KG, checkpoints, model cards, reusable benchmarks.
+          </p>
+        </div>
+        <div class="item wow">
+          <strong>Direction 3 — SAFE-Combo</strong>
+          <p class="muted">
+            Polypharmacy Graph joining drugs (RxNorm, ATC), diseases/phenotypes (ICD, HPO), genes, pathways, DDIs, side-effects, trial notes, with dose &amp; time tags. Set-based graph model predicts benefit/risk; safety-constrained policy proposes add/stop/swap/dose edits with calibrated uncertainty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- PORTFOLIO (Clubs + Certificates) -->
+  <section id="portfolio">
+    <div class="wrap">
+      <h2 class="wow">My Portfolio — Different Works</h2>
+
+      <h3 style="margin:10px 0 6px" class="wow">Extra-Curricular &amp; Club Highlights</h3>
+      <div class="grid">
+        <figure class="tile wow"><img id="club1" alt="Club activity 1"><figcaption class="cap">Machine Learning Club — Best Technical Club</figcaption></figure>
+        <figure class="tile wow"><img id="club2" alt="Club activity 2"><figcaption class="cap">Address to the Club as President</figcaption></figure>
+        <figure class="tile wow"><img id="club3" alt="Club activity 3"><figcaption class="cap">Motivational Talk to New Members</figcaption></figure>
+        <figure class="tile wow"><img id="club4" alt="Club activity 4"><figcaption class="cap">Inter-University Competition</figcaption></figure>
+        <figure class="tile wow"><img id="club5" alt="Club activity 5"><figcaption class="cap">Hackathon Leadership</figcaption></figure>
+        <figure class="tile wow"><img id="club6" alt="Club activity 6"><figcaption class="cap">Community Outreach</figcaption></figure>
+      </div>
+
+      <h3 style="margin:20px 0 6px" class="wow">Certificates &amp; Awards</h3>
+      <div class="grid">
+        <div class="tile wow"><img id="cert1"  alt="Certificate 1"></div>
+        <div class="tile wow"><img id="cert2"  alt="Certificate 2"></div>
+        <div class="tile wow"><img id="cert3"  alt="Certificate 3"></div>
+        <div class="tile wow"><img id="cert4"  alt="Certificate 4"></div>
+        <div class="tile wow"><img id="cert5"  alt="Certificate 5"></div>
+        <div class="tile wow"><img id="cert6"  alt="Certificate 6"></div>
+        <div class="tile wow"><img id="cert7"  alt="Certificate 7"></div>
+        <div class="tile wow"><img id="cert8"  alt="Certificate 8"></div>
+        <div class="tile wow"><img id="cert9"  alt="Certificate 9"></div>
+        <div class="tile wow"><img id="cert10" alt="Certificate 10"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- Publications Start (updated + search + Scholar note) -->
+  <div class="publications" id="publications">
+    <div class="container">
+      <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+        <p>Publications</p>
+        <h2>Research Papers</h2>
+        <div class="pub-search">
+          <input id="pubSearch" type="search" placeholder="Search publications (title, authors, venue)..." aria-label="Search publications">
+        </div>
+        <div class="pub-note">
+          Selected list — please check my
+          <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          for updates.
+        </div>
+      </div>
+
+      <div class="row" id="pubList">
+        <!-- 1 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="0.1s">
+          <div class="publication-text">
+            <h2>Water Quality Assessment Through Predictive Machine Learning</h2>
+            <p>Authors: H Ghosh, MA Tusher, IS Rahat, S Khasim, SN Mohanty</p>
+            <p>International Conference on Intelligent Computing and Networking, 77–88, 2023</p>
+          </div>
+        </div>
+        <!-- 2 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="0.3s">
+          <div class="publication-text">
+            <h2>A Study on the Application of Machine Learning and Deep Learning Techniques for Skin Cancer Detection</h2>
+            <p>Authors: H Ghosh, IS Rahat, SN Mohanty, JVR Ravindra, A Sobur</p>
+            <p>International Journal of Computer and Systems Engineering, 18(1), 51–59, 2024</p>
+          </div>
+        </div>
+        <!-- 3 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="0.5s">
+          <div class="publication-text">
+            <h2>A Step Towards Automated Haematology: DL Models for Blood Cell Detection and Classification</h2>
+            <p>Authors: IS Rahat, MA Ahmed, D Rohini, A Manjula, H Ghosh, A Sobur</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+        <!-- 4 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="0.7s">
+          <div class="publication-text">
+            <h2>Potato Leaf Disease Recognition and Prediction using Convolutional Neural Networks</h2>
+            <p>Authors: H Ghosh, IS Rahat, K Shaik, S Khasim, M Yesubabu</p>
+            <p>EAI Endorsed Transactions on Scalable Information Systems, 10(6), 2023</p>
+          </div>
+        </div>
+        <!-- 5 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="0.9s">
+          <div class="publication-text">
+            <h2>Deep Learning in Medical Imaging: A Case Study on Lung Tissue Classification</h2>
+            <p>Authors: SK Panda, JVN Ramesh, H Ghosh, IS Rahat, A Sobur, MH Bijoy</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+        <!-- 6 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="1.1s">
+          <div class="publication-text">
+            <h2>Advanced Deep Learning Models for Corn Leaf Disease Classification: A Field Study in Bangladesh</h2>
+            <p>Authors: SN Mohanty, H Ghosh, IS Rahat, CVR Reddy</p>
+            <p>Engineering Proceedings 59(1), 69, 2023</p>
+          </div>
+        </div>
+        <!-- 7 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="1.3s">
+          <div class="publication-text">
+            <h2>Unraveling the Heterogeneity of Lower-Grade Gliomas: Deep Learning-Assisted Flair Segmentation and Genomic Analysis of Brain MR Images</h2>
+            <p>Authors: IS Rahat, H Ghosh, K Shaik, S Khasim, G Rajaram</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2023</p>
+          </div>
+        </div>
+        <!-- 8 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="1.5s">
+          <div class="publication-text">
+            <h2>An All-Inclusive Machine Learning and Deep Learning Method for Forecasting Cardiovascular Disease in Bangladeshi Population</h2>
+            <p>Authors: M Mandava, SR Vinta, H Ghosh, IS Rahat</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2023</p>
+          </div>
+        </div>
+        <!-- 9 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="1.7s">
+          <div class="publication-text">
+            <h2>Deciphering Microorganisms through Intelligent Image Recognition: Machine Learning and Deep Learning Approaches, Challenges, and Advancements</h2>
+            <p>Authors: S Khasim, H Ghosh, IS Rahat, K Shaik, M Yesubabu</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2024</p>
+          </div>
+        </div>
+        <!-- 10 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="1.9s">
+          <div class="publication-text">
+            <h2>Identification and Categorization of Yellow Rust Infection in Wheat through Deep Learning Techniques</h2>
+            <p>Authors: M Mandava, SR Vinta, H Ghosh, IS Rahat</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2024</p>
+          </div>
+        </div>
+        <!-- 11 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="2.1s">
+          <div class="publication-text">
+            <h2>Enhancing Agricultural Sustainability with Deep Learning: A Case Study of Cauliflower Disease Classification</h2>
+            <p>Authors: NR Pradhan, H Ghosh, IS Rahat, JVN Ramesh, M Yesubabu</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2024</p>
+          </div>
+        </div>
+        <!-- 12 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="2.3s">
+          <div class="publication-text">
+            <h2>Using Deep Learning and Machine Learning: Real-Time Discernment and Diagnostics of Rice-Leaf Diseases in Bangladesh</h2>
+            <p>Authors: S Khasim, IS Rahat, H Ghosh, K Shaik, SK Panda</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2024</p>
+          </div>
+        </div>
+        <!-- 13 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="2.5s">
+          <div class="publication-text">
+            <h2>Cassava Syndrome Scan: A Pioneering Deep Learning System for Accurate Cassava Leaf Disease Classification</h2>
+            <p>Authors: IS Rahat, H Ghosh, JVN Ramesh, A Kiran, P Verma</p>
+            <p>International Conference on Applied Machine Learning and Data Analytics, 111–123, 2023</p>
+          </div>
+        </div>
+        <!-- 14 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="2.7s">
+          <div class="publication-text">
+            <h2>Advancing Breast Ultrasound Diagnostics Through Hybrid Deep Learning Models</h2>
+            <p>Authors: A Kiran, JVN Ramesh, IS Rahat, MAU Khan, A Hossain, R Uddin</p>
+            <p>Computers in Biology and Medicine, 180, 108962, 2024</p>
+          </div>
+        </div>
+        <!-- 15 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="2.9s">
+          <div class="publication-text">
+            <h2>A Comparative Analysis of ML and DL Approaches for Chronic Kidney Disease Progression</h2>
+            <p>Authors: S Mandava, SR Vinta, H Ghosh, IS Rahat</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2024</p>
+          </div>
+        </div>
+        <!-- 16 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="3.1s">
+          <div class="publication-text">
+            <h2>Microbial Image Deciphering: Navigating Challenges with Machine and Deep Learning</h2>
+            <p>Authors: H Ghosh, IS Rahat, SN Mohanty, JVN Ramesh</p>
+            <p>EAI Endorsed Transactions on Internet of Things, 2023</p>
+          </div>
+        </div>
+        <!-- 17 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="3.3s">
+          <div class="publication-text">
+            <h2>Deep Learning for Early Detection of Parkinson's Disease</h2>
+            <p>Authors: VS Bakkialakshmi, V Arulalan, G Chinnaraju, H Ghosh, IS Rahat, A Saha</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+        <!-- 18 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="3.5s">
+          <div class="publication-text">
+            <h2>Exploring DL Models for Accurate Alzheimer's Disease Classification (MRI)</h2>
+            <p>Authors: IS Rahat, T Hossain, H Ghosh, KLK Reddy, SK Palvadi, JVR Ravindra</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+        <!-- 19 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="3.7s">
+          <div class="publication-text">
+            <h2>Convolutional Neural Networks in Malaria Diagnosis: Cell Image Classification</h2>
+            <p>Authors: H Ghosh, IS Rahat, JVR Ravindra, J Balajee, MAU Khan, J Somasekar</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+        <!-- 20 -->
+        <div class="publication-item wow fadeInUp" data-wow-delay="3.9s">
+          <div class="publication-text">
+            <h2>From Pixels to Pathology: The Power of CNNs in Detecting Tuberculosis</h2>
+            <p>Authors: H Ghosh, IS Rahat, MDMH Nipu, GR Krishna, JVR Ravindra</p>
+            <p>EAI Endorsed Transactions on Pervasive Health and Technology, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Publications End -->
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="wow">Contact Me</h2>
+      <p class="muted wow">I’m based in Dhaka and open to research collaborations and PhD opportunities.</p>
+
+      <div class="contact-cards">
+        <a href="mailto:me.rahat2020@gmail.com" class="wow"><i class="fa-solid fa-envelope"></i> me.rahat2020@gmail.com</a>
+        <a href="mailto:rahat.21bce9985@vitapstudent.ac.in" class="wow"><i class="fa-solid fa-envelope-open-text"></i> rahat.21bce9985@vitapstudent.ac.in</a>
+        <a href="tel:+880181991342" class="wow"><i class="fa-solid fa-phone"></i> +880 1819 91342</a>
+        <a href="https://wa.me/880181991342" target="_blank" class="wow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" class="wow"><i class="fa-brands fa-google"></i> Google Scholar</a>
+        <a href="https://www.linkedin.com/in/irfan-sadiq-3a2884218" target="_blank" class="wow"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/IrfanSadiqRahat" target="_blank" class="wow"><i class="fa-brands fa-github"></i> GitHub</a>
+        <div class="item wow"><i class="fa-solid fa-location-dot" style="color:var(--accent);margin-right:8px"></i>
+          Dhaka Cantonment, East Manikdi, House No. 688, 1216, Dhaka, Bangladesh
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a class="to-top" href="#top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+
+  <footer>© <span id="y"></span> Irfan Sadiq Rahat. All rights reserved.</footer>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Helper: load local images with automatic extension detection
+    const exts=['.jpg','.jpeg','.png','.webp'];
+    function loadAuto(id, base){
+      const el = document.getElementById(id); if(!el) return;
+      let i=0; const tryNext=()=>{
+        if(i>=exts.length){ el.parentElement?.classList.add('muted'); el.style.display='none'; return; }
+        const src=base+exts[i++]; const t=new Image();
+        t.onload=()=>{ el.src=src; el.style.display='block';
+          const fb=document.getElementById(id+'-fallback'); if(fb) fb.style.display='none';
+        };
+        t.onerror=tryNext; t.src=src;
+      }; tryNext();
+    }
+
+    // Personal, clubs, certificates
+    loadAuto('img-personal','img/personal');
+    for(let n=1;n<=6;n++) loadAuto('club'+n,'img/club'+n);
+    for(let n=1;n<=10;n++) loadAuto('cert'+n,'img/cert'+n);
+
+    // Reveal on scroll (replaces WOW.js)
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('animated'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    document.querySelectorAll('.wow').forEach(el=>io.observe(el));
+
+    // Publications search filter
+    const q=document.getElementById('pubSearch');
+    if(q){
+      q.addEventListener('input',()=>{
+        const term=q.value.trim().toLowerCase();
+        document.querySelectorAll('#pubList .publication-item').forEach(card=>{
+          const txt=card.innerText.toLowerCase();
+          card.style.display = txt.includes(term) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
