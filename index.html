@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Irfan Sadiq Rahat — AI Researcher</title>
+  <meta name="description" content="Irfan Sadiq Rahat — Deep Learning Researcher specializing in Medical Imaging AI and Trustworthy AI. 28+ publications, 514 citations, h-index 12."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0a0a0f;
+      --bg2:       #111118;
+      --bg3:       #16161f;
+      --border:    rgba(255,255,255,0.08);
+      --border2:   rgba(255,255,255,0.14);
+      --text:      #e8e8f0;
+      --muted:     #8888a0;
+      --accent:    #6C63FF;
+      --accent2:   #48CAE4;
+      --green:     #4ade80;
+      --amber:     #fbbf24;
+      --coral:     #f87171;
+      --radius:    12px;
+      --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(16px); background: rgba(10,10,15,0.85);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-logo { font-weight: 600; font-size: 16px; color: var(--text); letter-spacing: -0.3px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── LAYOUT ── */
+    main { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+    section { padding: 5rem 0 3rem; }
+    .section-label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent2); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.75rem; }
+    h2.section-title { font-size: 28px; font-weight: 600; color: var(--text); margin-bottom: 2rem; }
+    .divider { height: 1px; background: var(--border); margin: 1rem 0; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,99,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-glow2 {
+      position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(72,202,228,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(108,99,255,0.12); border: 1px solid rgba(108,99,255,0.25);
+      color: #a78bfa; font-size: 13px; padding: 5px 14px; border-radius: 99px;
+      margin-bottom: 1.5rem; width: fit-content;
+    }
+    .hero-tag .dot { width:7px; height:7px; border-radius:50%; background:#6C63FF; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    h1.hero-name { font-size: clamp(32px, 6vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 0.5rem; }
+    h1.hero-name .grad { background: linear-gradient(135deg, #6C63FF, #48CAE4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-role { font-size: 20px; color: var(--muted); margin-bottom: 1.5rem; font-weight: 400; }
+    .hero-bio { font-size: 16px; color: var(--muted); max-width: 580px; line-height: 1.8; margin-bottom: 2rem; }
+    .hero-stats { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 700; color: var(--text); display: block; }
+    .stat-lbl { font-size: 12px; color: var(--muted); display: block; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff; font-size: 14px; font-weight: 500;
+      padding: 10px 22px; border-radius: var(--radius-sm); text-decoration: none;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border2); color: var(--text); font-size: 14px; font-weight: 500;
+      padding: 10px 22px; border-radius: var(--radius-sm); text-decoration: none;
+      transition: border-color .2s, background .2s;
+    }
+    .btn-outline:hover { border-color: var(--accent); background: rgba(108,99,255,0.08); }
+    .hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 2rem; }
+    .badge {
+      font-size: 12px; padding: 4px 12px; border-radius: 99px; border: 1px solid;
+      font-family: 'JetBrains Mono', monospace; font-weight: 400;
+    }
+    .badge-blue   { color: #60a5fa; border-color: rgba(96,165,250,0.3); background: rgba(96,165,250,0.07); }
+    .badge-purple { color: #a78bfa; border-color: rgba(167,139,250,0.3); background: rgba(167,139,250,0.07); }
+    .badge-teal   { color: #2dd4bf; border-color: rgba(45,212,191,0.3); background: rgba(45,212,191,0.07); }
+    .badge-green  { color: #4ade80; border-color: rgba(74,222,128,0.3); background: rgba(74,222,128,0.07); }
+    .badge-amber  { color: #fbbf24; border-color: rgba(251,191,36,0.3);  background: rgba(251,191,36,0.07); }
+
+    /* ── RESEARCH CARDS ── */
+    .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .research-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .research-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .research-card .status {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; padding: 3px 10px; border-radius: 99px;
+      margin-bottom: 0.75rem;
+    }
+    .status-active { background: rgba(74,222,128,0.12); color: var(--green); border: 1px solid rgba(74,222,128,0.25); }
+    .status-target { background: rgba(108,99,255,0.12); color: #a78bfa; border: 1px solid rgba(108,99,255,0.25); }
+    .research-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; color: var(--text); }
+    .research-card p  { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .research-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .rtag { font-size: 11px; padding: 2px 8px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--muted); }
+    .research-card .novelty {
+      margin-top: 0.75rem; padding: 8px 10px;
+      background: rgba(108,99,255,0.06); border-left: 2px solid var(--accent);
+      border-radius: 0 4px 4px 0; font-size: 12px; color: #a78bfa;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-filters { display: flex; gap: 8px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .filter-btn {
+      font-size: 12px; padding: 5px 14px; border-radius: 99px;
+      border: 1px solid var(--border); background: transparent; color: var(--muted);
+      cursor: pointer; transition: all .2s; font-family: 'Inter', sans-serif;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,99,255,0.08); }
+    .pub-item {
+      padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+      transition: background .15s;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 0.4rem; flex-wrap: wrap; }
+    .pub-year { font-size: 11px; font-family: 'JetBrains Mono', monospace; color: var(--muted); }
+    .pub-venue {
+      font-size: 11px; padding: 2px 8px; border-radius: 4px; font-weight: 500;
+    }
+    .venue-nature   { background: rgba(74,222,128,0.12); color: var(--green); }
+    .venue-springer { background: rgba(251,191,36,0.12);  color: var(--amber); }
+    .venue-ieee     { background: rgba(96,165,250,0.12);  color: #60a5fa; }
+    .venue-eai      { background: rgba(255,255,255,0.07); color: var(--muted); }
+    .venue-conf     { background: rgba(167,139,250,0.12); color: #a78bfa; }
+    .if-tag { font-size: 11px; color: var(--green); font-family: 'JetBrains Mono', monospace; }
+    .pub-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; }
+    .pub-title a { color: inherit; text-decoration: none; }
+    .pub-title a:hover { color: var(--accent); }
+    .pub-authors { font-size: 12px; color: var(--muted); }
+    .pub-authors .me { color: var(--accent2); font-weight: 500; }
+
+    /* ── PROJECTS ── */
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .proj-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .proj-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .proj-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.5rem; }
+    .proj-card h3 { font-size: 14px; font-weight: 600; color: var(--text); }
+    .proj-card p  { font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 0.75rem; }
+    .proj-links { display: flex; gap: 8px; }
+    .proj-link { font-size: 11px; color: var(--accent2); text-decoration: none; padding: 3px 8px; border: 1px solid rgba(72,202,228,0.25); border-radius: 4px; transition: background .2s; }
+    .proj-link:hover { background: rgba(72,202,228,0.08); }
+    .proj-lang { font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 5px; }
+    .lang-dot  { width: 8px; height: 8px; border-radius: 50%; }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-group { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .skill-group h4 { font-size: 13px; font-weight: 600; color: var(--accent2); margin-bottom: 0.75rem; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-pill { font-size: 11px; padding: 3px 10px; border-radius: 99px; background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before { content:''; position:absolute; left:6px; top:0; bottom:0; width:1px; background:var(--border); }
+    .tl-item { position: relative; margin-bottom: 2rem; }
+    .tl-dot { position:absolute; left:-2rem; top:4px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
+    .tl-date { font-size: 12px; color: var(--muted); font-family:'JetBrains Mono',monospace; margin-bottom:0.25rem; }
+    .tl-title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .tl-sub   { font-size: 13px; color: var(--accent2); margin-bottom: 0.4rem; }
+    .tl-desc  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* ── HIGHLIGHTS ── */
+    .highlights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hl-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 12px 14px;
+    }
+    .hl-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .hl-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .hl-text strong { color: var(--text); font-weight: 500; }
+
+    /* ── PORTFOLIO IMAGES ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 1.5rem; }
+    .gallery-item {
+      aspect-ratio: 4/3; border-radius: var(--radius-sm);
+      background: var(--bg3); border: 1px solid var(--border);
+      overflow: hidden; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-item img { width:100%; height:100%; object-fit:cover; transition: transform .3s; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item .img-placeholder {
+      text-align: center; color: var(--muted); font-size: 12px; padding: 1rem;
+    }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
+      color: #fff; font-size: 11px; padding: 20px 8px 8px; opacity: 0;
+      transition: opacity .2s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px; background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); text-decoration: none; color: var(--text);
+      transition: border-color .2s; font-size: 14px;
+    }
+    .contact-link:hover { border-color: var(--accent); }
+    .contact-link .cl-icon { width: 20px; text-align: center; color: var(--accent2); }
+    .contact-link .cl-label { color: var(--muted); font-size: 12px; display: block; }
+    .contact-note { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+    .contact-note h4 { font-size: 14px; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+    .contact-note p  { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .available-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(74,222,128,0.1); border: 1px solid rgba(74,222,128,0.25);
+      color: var(--green); font-size: 12px; padding: 4px 12px; border-radius: 99px;
+      margin-bottom: 0.75rem;
+    }
+    .available-dot { width:6px; height:6px; border-radius:50%; background:var(--green); animation:pulse 2s infinite; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 2rem;
+      text-align: center; font-size: 13px; color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      main { padding: 0 1rem; }
+      .research-grid, .projects-grid, .skills-grid,
+      .contact-grid, .highlights-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Irfan Sadiq <span>Rahat</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Papers</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ── HERO ── -->
+<section id="about">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-tag">
+    <span class="dot"></span>
+    Open to funded MS / PhD positions
+  </div>
+
+  <h1 class="hero-name">
+    <span class="grad">Irfan Sadiq</span><br>Rahat
+  </h1>
+  <p class="hero-role">AI Researcher · Medical Imaging · Trustworthy AI</p>
+
+  <p class="hero-bio">
+    I build deep learning systems that clinicians can <strong>actually trust</strong> —
+    not just models with high benchmark accuracy, but systems with formal uncertainty guarantees,
+    interpretable decisions, and robustness to real-world clinical constraints.
+    B.Tech CSE (AI &amp; ML), VIT-AP University, India.
+  </p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">514</span>
+      <span class="stat-lbl">Citations</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">12</span>
+      <span class="stat-lbl">h-index</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">28+</span>
+      <span class="stat-lbl">Publications</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">15</span>
+      <span class="stat-lbl">i10-index</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">5</span>
+      <span class="stat-lbl">Countries presented</span>
+    </div>
+  </div>
+
+  <div class="hero-ctas">
+    <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" class="btn-primary">Google Scholar →</a>
+    <a href="https://github.com/IrfanSadiqRahat" target="_blank" class="btn-outline">GitHub</a>
+    <a href="https://orcid.org/0009-0003-3254-4846" target="_blank" class="btn-outline">ORCID</a>
+    <a href="mailto:merahat200222@gmail.com" class="btn-outline">Email</a>
+  </div>
+
+  <div class="hero-badges">
+    <span class="badge badge-purple">Medical Imaging AI</span>
+    <span class="badge badge-teal">Uncertainty Quantification</span>
+    <span class="badge badge-blue">Foundation Model Adaptation</span>
+    <span class="badge badge-green">Precision Agriculture AI</span>
+    <span class="badge badge-amber">Explainability / XAI</span>
+  </div>
+
+  <!-- Profile photo (personal.png in repo root) -->
+  <div style="margin-top:2rem">
+    <div style="width:min(260px,90%);aspect-ratio:1/1;border-radius:16px;border:1px solid var(--border);background:#0a0f17;overflow:hidden;display:flex;align-items:center;justify-content:center">
+      <img id="img-personal" alt="Irfan Sadiq Rahat" style="display:none;width:100%;height:100%;object-fit:cover;border-radius:inherit">
+      <span id="img-personal-fallback" style="color:var(--muted);font-size:13px;text-align:center;padding:1rem">
+        <i class="fa-solid fa-user" style="font-size:40px;opacity:.2;display:block;margin-bottom:8px"></i>
+        Profile photo
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACTIVE RESEARCH ── -->
+<section id="research">
+  <p class="section-label">Active Research</p>
+  <h2 class="section-title">Current Projects</h2>
+
+  <div class="research-grid">
+
+    <div class="research-card">
+      <div>
+        <span class="status status-active">● In Progress</span>
+        <span class="status status-target" style="margin-left:6px">MICCAI 2026</span>
+      </div>
+      <h3>MultiModal-SAM-BraTS</h3>
+      <p>Dual-branch LoRA adaptation of SAM for multi-modal brain tumor segmentation (T1/T2/FLAIR MRI). Cross-modal attention fusion with missing-modality robustness. Adds &lt;5% parameters over frozen SAM.</p>
+      <div class="research-tags">
+        <span class="rtag">LoRA / PEFT</span>
+        <span class="rtag">SAM</span>
+        <span class="rtag">BraTS 2023</span>
+        <span class="rtag">Segmentation</span>
+      </div>
+      <div class="novelty">
+        Novelty: First dual-branch LoRA-SAM with cross-modal attention + missing-modality dropout
+      </div>
+      <div style="margin-top:1rem">
+        <a href="https://github.com/IrfanSadiqRahat/MultiModal-SAM-BraTS" target="_blank" class="proj-link">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="research-card">
+      <div>
+        <span class="status status-active">● In Progress</span>
+        <span class="status status-target" style="margin-left:6px">IEEE TMI 2026</span>
+      </div>
+      <h3>ConformalCXR</h3>
+      <p>Post-hoc RAPS conformal prediction on CheXagent VLM for chest X-ray diagnosis with provable per-class coverage guarantees. Zero retraining required. Evaluated on CheXpert + NIH ChestX-ray14.</p>
+      <div class="research-tags">
+        <span class="rtag">Conformal Prediction</span>
+        <span class="rtag">CheXagent VLM</span>
+        <span class="rtag">CheXpert</span>
+        <span class="rtag">Trustworthy AI</span>
+      </div>
+      <div class="novelty">
+        Novelty: First class-conditional RAPS on a radiology VLM with formal safety guarantees
+      </div>
+      <div style="margin-top:1rem">
+        <a href="https://github.com/IrfanSadiqRahat/ConformalCXR" target="_blank" class="proj-link">GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PUBLICATIONS ── -->
+<section id="publications">
+  <p class="section-label">Research Output</p>
+  <h2 class="section-title">Publications</h2>
+
+  <div class="pub-filters">
+    <button class="filter-btn active" onclick="filterPubs('all',this)">All (28+)</button>
+    <button class="filter-btn" onclick="filterPubs('medical',this)">Medical Imaging</button>
+    <button class="filter-btn" onclick="filterPubs('agri',this)">Agriculture AI</button>
+    <button class="filter-btn" onclick="filterPubs('springer',this)">Springer / Nature</button>
+    <button class="filter-btn" onclick="filterPubs('ieee',this)">IEEE</button>
+  </div>
+
+  <div id="pub-list">
+
+    <div class="pub-item" data-tags="springer medical">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-venue venue-nature">Scientific Reports (Nature)</span>
+        <span class="if-tag">IF 3.9</span>
+      </div>
+      <p class="pub-title">
+        <a href="https://doi.org/10.1038/s41598-025-02378-0" target="_blank">
+          Towards Precision Agriculture: Tea Leaf Disease Detection using CNNs and Image Processing
+        </a>
+      </p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, H Ghosh, S Dara, S Kant · Vol.15, Article 17571</p>
+    </div>
+
+    <div class="pub-item" data-tags="springer agri">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-venue venue-springer">Discover Sustainability (Springer)</span>
+      </div>
+      <p class="pub-title">
+        <a href="https://doi.org/10.1007/s43621-025-01149-1" target="_blank">
+          Advanced Neural Network Architectures for Tomato Leaf Disease Diagnosis in Precision Agriculture
+        </a>
+      </p>
+      <p class="pub-authors">H Ghosh, <span class="me">IS Rahat</span>, MM Emon, MJ Mashrafi, MA Tanzin, SN Mohanty, S Kant · Vol.6, Article 312</p>
+    </div>
+
+    <div class="pub-item" data-tags="ieee medical">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-venue venue-ieee">IEEE DELCON 2025</span>
+      </div>
+      <p class="pub-title">
+        <a href="https://github.com/IrfanSadiqRahat/MS-DSCCNet-BrainTumor" target="_blank">
+          Deep Learning-Based Multi-Class Brain Tumor Classification from MRI Using a Novel MS-DSCCNet Architecture
+        </a>
+      </p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, et al. · Paper #234</p>
+    </div>
+
+    <div class="pub-item" data-tags="ieee medical">
+      <div class="pub-meta">
+        <span class="pub-year">2025</span>
+        <span class="pub-venue venue-ieee">IEEE DELCON 2025</span>
+      </div>
+      <p class="pub-title">
+        <a href="https://github.com/IrfanSadiqRahat/PneuNet-PediatricPneumonia" target="_blank">
+          PneuNet: A Multi-Scale Attention-Enhanced CNN for Pediatric Pneumonia Detection from Chest X-rays
+        </a>
+      </p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, et al. · Paper #235</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical springer">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-springer">Computers in Biology and Medicine</span>
+      </div>
+      <p class="pub-title">Advancing Breast Ultrasound Diagnostics Through Hybrid Deep Learning Models</p>
+      <p class="pub-authors">A Kiran, JVN Ramesh, <span class="me">IS Rahat</span>, MAU Khan, A Hossain, R Uddin · Vol.180, 108962</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">A Step Towards Automated Haematology: DL Models for Blood Cell Detection and Classification</p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, MA Ahmed, D Rohini, A Manjula, H Ghosh, A Sobur</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">Exploring DL Models for Accurate Alzheimer's Disease Classification Based on MRI Imaging</p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, T Hossain, H Ghosh, KLK Reddy, SK Palvadi, JVR Ravindra</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">From Pixels to Pathology: The Power of CNNs in Detecting Tuberculosis</p>
+      <p class="pub-authors">H Ghosh, <span class="me">IS Rahat</span>, MDMH Nipu, GR Krishna, JVR Ravindra</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">Convolutional Neural Networks in Malaria Diagnosis: A Study on Cell Image Classification</p>
+      <p class="pub-authors">H Ghosh, <span class="me">IS Rahat</span>, JVR Ravindra, J Balajee, MAU Khan, J Somasekar</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">Deep Learning in Medical Imaging: A Case Study on Lung Tissue Classification</p>
+      <p class="pub-authors">SK Panda, JVN Ramesh, H Ghosh, <span class="me">IS Rahat</span>, A Sobur, MH Bijoy</p>
+    </div>
+
+    <div class="pub-item" data-tags="agri">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Internet of Things</span>
+      </div>
+      <p class="pub-title">Enhancing Agricultural Sustainability with Deep Learning: Cauliflower Disease Classification</p>
+      <p class="pub-authors">NR Pradhan, H Ghosh, <span class="me">IS Rahat</span>, JVN Ramesh, M Yesubabu</p>
+    </div>
+
+    <div class="pub-item" data-tags="agri">
+      <div class="pub-meta">
+        <span class="pub-year">2024</span>
+        <span class="pub-venue venue-eai">EAI Trans. Internet of Things</span>
+      </div>
+      <p class="pub-title">Using Deep Learning and Machine Learning: Real-Time Discernment and Diagnostics of Rice-Leaf Diseases in Bangladesh</p>
+      <p class="pub-authors">S Khasim, <span class="me">IS Rahat</span>, H Ghosh, K Shaik, SK Panda</p>
+    </div>
+
+    <div class="pub-item" data-tags="medical">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-venue venue-eai">EAI Trans. Pervasive Health</span>
+      </div>
+      <p class="pub-title">Unraveling the Heterogeneity of Lower-Grade Gliomas: Deep Learning-Assisted FLAIR Segmentation and Genomic Analysis</p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, H Ghosh, K Shaik, S Khasim, G Rajaram</p>
+    </div>
+
+    <div class="pub-item" data-tags="agri conf">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-venue venue-conf">AMLDA 2023 (Germany)</span>
+      </div>
+      <p class="pub-title">Cassava Syndrome Scan: A Pioneering Deep Learning System for Accurate Cassava Leaf Disease Classification</p>
+      <p class="pub-authors"><span class="me">IS Rahat</span>, H Ghosh, JVN Ramesh, A Kiran, P Verma · pp.111–123</p>
+    </div>
+
+    <div class="pub-item" data-tags="agri springer">
+      <div class="pub-meta">
+        <span class="pub-year">2023</span>
+        <span class="pub-venue venue-springer">Springer (IC-ICN 2023)</span>
+      </div>
+      <p class="pub-title">Water Quality Assessment Through Predictive Machine Learning</p>
+      <p class="pub-authors">H Ghosh, MA Tusher, <span class="me">IS Rahat</span>, S Khasim, SN Mohanty · LNNS 699, pp.77–88</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top:1.5rem; text-align:center;">
+    <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" class="btn-outline" style="font-size:13px">
+      View all 28+ papers on Google Scholar →
+    </a>
+  </div>
+</section>
+
+<!-- ── PROJECTS (REPOS) ── -->
+<section id="projects">
+  <p class="section-label">Open Source</p>
+  <h2 class="section-title">GitHub Repositories</h2>
+
+  <div class="projects-grid">
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>MultiModal-SAM-BraTS</h3>
+        <span class="badge badge-purple" style="font-size:10px">Research</span>
+      </div>
+      <p>Dual-branch LoRA-SAM for multi-modal brain tumor segmentation. Target: MICCAI 2026.</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/MultiModal-SAM-BraTS" target="_blank" class="proj-link">GitHub</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · PyTorch · SAM</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>ConformalCXR</h3>
+        <span class="badge badge-purple" style="font-size:10px">Research</span>
+      </div>
+      <p>Conformal prediction on CheXagent VLM for uncertainty-aware chest X-ray diagnosis. Target: IEEE TMI 2026.</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/ConformalCXR" target="_blank" class="proj-link">GitHub</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · RAPS · CheXpert</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>MS-DSCCNet-BrainTumor</h3>
+        <span class="badge badge-green" style="font-size:10px">Published</span>
+      </div>
+      <p>Multi-scale depthwise separable CNN with channel attention for brain tumor classification. IEEE DELCON 2025, Paper #234.</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/MS-DSCCNet-BrainTumor" target="_blank" class="proj-link">GitHub</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · PyTorch</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>PneuNet-PediatricPneumonia</h3>
+        <span class="badge badge-green" style="font-size:10px">Published</span>
+      </div>
+      <p>Lightweight multi-scale attention CNN for pediatric pneumonia detection. High-sensitivity design. IEEE DELCON 2025, Paper #235.</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/PneuNet-PediatricPneumonia" target="_blank" class="proj-link">GitHub</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · PyTorch</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>TeaLeafNet-GWO</h3>
+        <span class="badge badge-amber" style="font-size:10px">Nature 2025</span>
+      </div>
+      <p>CNN with residual blocks for tea leaf disease detection. Published in Scientific Reports (Nature), IF 3.9. 99% accuracy.</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/TeaLeafNet-GWO" target="_blank" class="proj-link">GitHub</a>
+        <a href="https://doi.org/10.1038/s41598-025-02378-0" target="_blank" class="proj-link">Paper</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · TensorFlow</div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3>TomatoLeaf-AdvancedNN</h3>
+        <span class="badge badge-amber" style="font-size:10px">Springer 2025</span>
+      </div>
+      <p>Advanced neural networks for tomato leaf disease across 10 classes. Published in Discover Sustainability (Springer).</p>
+      <div class="proj-links">
+        <a href="https://github.com/IrfanSadiqRahat/TomatoLeaf-AdvancedNN" target="_blank" class="proj-link">GitHub</a>
+        <a href="https://doi.org/10.1007/s43621-025-01149-1" target="_blank" class="proj-link">Paper</a>
+      </div>
+      <div class="proj-lang" style="margin-top:8px"><span class="lang-dot" style="background:#3776ab"></span> Python · PyTorch · XAI</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PORTFOLIO / GALLERY ── -->
+<section id="portfolio">
+  <p class="section-label">Gallery</p>
+  <h2 class="section-title">Activities &amp; Highlights</h2>
+
+  <h3 style="font-size:14px; color:var(--muted); margin-bottom:1rem; font-weight:500;">Club Leadership &amp; Events</h3>
+  <div class="gallery-grid" id="club-gallery">
+    <div class="gallery-item">
+      <img id="club1" alt="club1">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">🏆</div>
+        <div>Best Technical Club Award</div>
+      </div>
+      <div class="gallery-caption">Machine Learning Club — Best Technical Club</div>
+    </div>
+    <div class="gallery-item">
+      <img id="club2" alt="club2">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">🎤</div>
+        <div>Address to the Club</div>
+      </div>
+      <div class="gallery-caption">Address to the Club as President</div>
+    </div>
+    <div class="gallery-item">
+      <img id="club3" alt="club3">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">💬</div>
+        <div>Motivational Talk to New Members</div>
+      </div>
+      <div class="gallery-caption">Motivational Talk to New Members</div>
+    </div>
+    <div class="gallery-item">
+      <img id="club4" alt="club4">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">🏅</div>
+        <div>Inter-University Competition</div>
+      </div>
+      <div class="gallery-caption">Inter-University Competition</div>
+    </div>
+    <div class="gallery-item">
+      <img id="club5" alt="club5">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">💻</div>
+        <div>Hackathon Leadership</div>
+      </div>
+      <div class="gallery-caption">Hackathon Leadership</div>
+    </div>
+    <div class="gallery-item">
+      <img id="club6" alt="club6">
+      <div class="img-placeholder" style="display:none">
+        <div style="font-size:24px;margin-bottom:6px">🤝</div>
+        <div>Community Outreach</div>
+      </div>
+      <div class="gallery-caption">Community Outreach</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:14px; color:var(--muted); margin:2rem 0 1rem; font-weight:500;">Certificates &amp; Awards</h3>
+  <div class="gallery-grid" id="cert-gallery">
+    <div class="gallery-item">
+      <img id="cert1" alt="cert1">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 1</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert2" alt="cert2">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 2</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert3" alt="cert3">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 3</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert4" alt="cert4">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 4</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert5" alt="cert5">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 5</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert6" alt="cert6">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 6</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert7" alt="cert7">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 7</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert8" alt="cert8">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 8</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert9" alt="cert9">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 9</div></div>
+    </div>
+    <div class="gallery-item">
+      <img id="cert10" alt="cert10">
+      <div class="img-placeholder" style="display:none"><div style="font-size:24px;margin-bottom:6px">📜</div><div>Certificate 10</div></div>
+    </div>
+  </div>
+
+  <p style="font-size:12px; color:var(--muted); margin-top:1rem; font-style:italic;">
+    Your images are already in the repo root as <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;font-size:11px">personal.png, club1.png–club6.png, cert1.png–cert10.png</code> ✓
+  </p>
+</section>
+
+<!-- ── JOURNEY ── -->
+<section id="journey">
+  <p class="section-label">Background</p>
+  <h2 class="section-title">Academic Journey</h2>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">2021 – 2025</div>
+      <div class="tl-title">B.Tech — Computer Science &amp; Engineering (AI &amp; ML)</div>
+      <div class="tl-sub">VIT-AP University, Amaravati, India · GPA 7.92/10</div>
+      <div class="tl-desc">Specialized in AI/ML. Published 28+ papers during undergraduate years. President of Machine Learning Club (160+ members). Presented at 5 international conferences across Germany, Slovakia, Dubai, India, Malaysia.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent2)"></div>
+      <div class="tl-date">Sep 2023 – Feb 2024</div>
+      <div class="tl-title">Machine Learning Research Intern</div>
+      <div class="tl-sub">Dept. of Computer Engineering, Prince Sattam Bin Abdulaziz University, Saudi Arabia (Remote)</div>
+      <div class="tl-desc">Research on deep learning for automated haematology — blood cell detection and classification using medical imaging datasets. Published research paper on automated haematology.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent2)"></div>
+      <div class="tl-date">Apr 2023 – Apr 2024</div>
+      <div class="tl-title">Machine Learning Research Intern</div>
+      <div class="tl-sub">Dept. of AI &amp; Data Science, IFHE Hyderabad, India (Remote)</div>
+      <div class="tl-desc">Deep learning models for medical diagnostics (TB, Pneumonia, Alzheimer's detection). Published 3 research papers on CNN-based disease detection from medical images.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--accent2)"></div>
+      <div class="tl-date">Sep 2022 – Mar 2023</div>
+      <div class="tl-title">Machine Learning Intern</div>
+      <div class="tl-sub">ADE Consulting Services, Dhaka, Bangladesh (Remote)</div>
+      <div class="tl-desc">ML models for business prediction and risk management. Developed predictive algorithms for financial decision-making. Data analysis with real-time data pipelines.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:var(--muted)"></div>
+      <div class="tl-date">2018 – 2020</div>
+      <div class="tl-title">Higher Secondary Certificate (Science)</div>
+      <div class="tl-sub">BAF Shaheen College Dhaka · GPA 5.0/5.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HIGHLIGHTS ── -->
+<section>
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Awards &amp; Highlights</h2>
+  <div class="highlights-grid">
+    <div class="hl-item">
+      <span class="hl-icon">🏆</span>
+      <div class="hl-text"><strong>Best Research Paper Award</strong> — ICISML Conference 2023, India</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🥇</span>
+      <div class="hl-text"><strong>Best Technical Club Award</strong> — VIT-AP University 2024 (as ML Club President)</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🌟</span>
+      <div class="hl-text"><strong>Raman Research Award</strong> for Publications — VIT-AP University 2023</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🎓</span>
+      <div class="hl-text"><strong>I-SEE Scholarship</strong> — International Scholarship for Education &amp; Enrichment, 2021</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">🌍</span>
+      <div class="hl-text"><strong>5 international conferences</strong> — Germany, Slovakia, Dubai, India, Malaysia</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">📝</span>
+      <div class="hl-text"><strong>BMC Medical Imaging reviewer</strong> — invited to editorial board by Springer Nature</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">📄</span>
+      <div class="hl-text"><strong>Published in Scientific Reports</strong> (Nature Portfolio) — IF 3.9, 2025</div>
+    </div>
+    <div class="hl-item">
+      <span class="hl-icon">👥</span>
+      <div class="hl-text"><strong>ML Club President</strong> — grew from 4 to 160+ members, 20+ workshops organized</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section>
+  <p class="section-label">Technical</p>
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h4>Deep Learning</h4>
+      <div class="skill-pills">
+        <span class="skill-pill">PyTorch</span>
+        <span class="skill-pill">TensorFlow</span>
+        <span class="skill-pill">Keras</span>
+        <span class="skill-pill">MONAI</span>
+        <span class="skill-pill">Hugging Face</span>
+        <span class="skill-pill">scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Languages &amp; Tools</h4>
+      <div class="skill-pills">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">R</span>
+        <span class="skill-pill">MATLAB</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Git</span>
+        <span class="skill-pill">Jupyter</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h4>Medical AI</h4>
+      <div class="skill-pills">
+        <span class="skill-pill">SAM / MedSAM</span>
+        <span class="skill-pill">Conformal Prediction</span>
+        <span class="skill-pill">Grad-CAM</span>
+        <span class="skill-pill">LoRA / PEFT</span>
+        <span class="skill-pill">NIfTI / nibabel</span>
+        <span class="skill-pill">OpenCV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+
+  <div class="contact-grid">
+    <div class="contact-links">
+      <a href="mailto:merahat200222@gmail.com" class="contact-link">
+        <span class="cl-icon">✉</span>
+        <div>
+          <span class="cl-label">Email</span>
+          merahat200222@gmail.com
+        </div>
+      </a>
+      <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" class="contact-link">
+        <span class="cl-icon">📚</span>
+        <div>
+          <span class="cl-label">Google Scholar</span>
+          514 citations · h-index 12
+        </div>
+      </a>
+      <a href="https://github.com/IrfanSadiqRahat" target="_blank" class="contact-link">
+        <span class="cl-icon">⌨</span>
+        <div>
+          <span class="cl-label">GitHub</span>
+          IrfanSadiqRahat
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/irfan-sadiq-3a2884218/" target="_blank" class="contact-link">
+        <span class="cl-icon">💼</span>
+        <div>
+          <span class="cl-label">LinkedIn</span>
+          Irfan Sadiq Rahat
+        </div>
+      </a>
+      <a href="https://orcid.org/0009-0003-3254-4846" target="_blank" class="contact-link">
+        <span class="cl-icon">🔬</span>
+        <div>
+          <span class="cl-label">ORCID</span>
+          0009-0003-3254-4846
+        </div>
+      </a>
+      <a href="https://wa.me/8801861991342" target="_blank" class="contact-link">
+        <span class="cl-icon">💬</span>
+        <div>
+          <span class="cl-label">WhatsApp</span>
+          +880 1861 991342
+        </div>
+      </a>
+    </div>
+
+    <div class="contact-note">
+      <div class="available-badge">
+        <span class="available-dot"></span>
+        Available for PhD/MS positions
+      </div>
+      <h4>Open to collaborations &amp; opportunities</h4>
+      <p>
+        I am actively seeking <strong>funded MS/PhD positions</strong> in AI for healthcare, trustworthy AI,
+        and medical image analysis — particularly at labs working on foundation model adaptation,
+        uncertainty quantification, or clinical AI systems.
+        <br><br>
+        I am also open to <strong>research collaborations</strong> on medical imaging AI, conformal prediction,
+        or precision agriculture AI.
+        <br><br>
+        Based in <strong>Dhaka, Bangladesh</strong>. Available for remote collaboration globally.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2025 Irfan Sadiq Rahat · Dhaka, Bangladesh ·
+  <a href="https://github.com/IrfanSadiqRahat" target="_blank" style="color:var(--accent);text-decoration:none">GitHub</a> ·
+  <a href="https://scholar.google.com/citations?user=QIhCXGMAAAAJ&hl=en" target="_blank" style="color:var(--accent);text-decoration:none">Google Scholar</a>
+</footer>
+
+<script>
+  // Publication filter
+  function filterPubs(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-item').forEach(item => {
+      if (tag === 'all') { item.style.display = ''; return; }
+      const tags = item.dataset.tags || '';
+      item.style.display = tags.includes(tag) ? '' : 'none';
+    });
+  }
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks  = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 80) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#'+current ? 'var(--text)' : '';
+    });
+  });
+</script>
+<script>
+  /* IMAGE LOADER
+     Reads from REPO ROOT. Tries .png first (your uploaded files),
+     then .jpg, .jpeg, .webp — so nothing needs renaming.           */
+  var EXTS = ['.png','.PNG','.jpg','.JPG','.jpeg','.JPEG','.webp','.WEBP'];
+
+  function loadAuto(id, base) {
+    var img = document.getElementById(id);
+    var emp = document.getElementById(id + '-empty') ||
+              document.getElementById(id + '-fallback');
+    if (!img) return;
+    img.style.display = 'none';
+    var i = 0;
+    function go() {
+      if (i >= EXTS.length) return;
+      var src = encodeURI(base + EXTS[i++]) + '?v=5';
+      var t   = new Image();
+      t.onload = function() {
+        img.src = src;
+        img.style.display = 'block';
+        img.classList.add('loaded');
+        if (emp) emp.style.display = 'none';
+      };
+      t.onerror = go;
+      t.src = src;
+    }
+    go();
+  }
+
+  /* your files: personal.png, club1.png…club6.png, cert1.png…cert10.png */
+  loadAuto('img-personal', 'personal');
+  for (var n = 1; n <= 6;  n++) loadAuto('club' + n, 'club' + n);
+  for (var n = 1; n <= 10; n++) loadAuto('cert' + n, 'cert' + n);
+</script>
+</body>
+</html>
